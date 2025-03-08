@@ -1,5 +1,10 @@
 let parentElement = document.querySelector(".container-element");
 let formElement = document.querySelector(".form-creation-container");
+let chooseColor = document.querySelector("#chooseColor");
+let currentColor = "black";
+
+
+
 let currentColorSelected;
 
 function populateContainerElement(numberOfSides) {
@@ -12,7 +17,7 @@ function populateContainerElement(numberOfSides) {
         childElement.addEventListener('click', (e) => {
             e.preventDefault();
             console.log(randomColor());
-            childElement.style.backgroundColor = randomColor();
+            childElement.style.backgroundColor = currentColor;
         }); 
 
 
@@ -68,6 +73,11 @@ createGridForm.addEventListener("submit", (e) => {
     populateContainerElement(newNumberOfSides);   
     console.log(e);
 });
+
+
+chooseColor.addEventListener("input", (event) => {
+    currentColor = event.target.value;
+})
 
 // This code will be for the paintbrush selector
 

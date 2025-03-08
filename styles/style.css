@@ -1,4 +1,7 @@
-
+body {
+    background-color: lightcoral;
+    color: cyan;
+}
 
 .navbar-container {
     display: flex;    
@@ -46,34 +49,7 @@
 }
 
 .sketch-container {
-    outline: 6px solid black;
     height: 10000px;
-}
-
-.paintBrushesSelector {
-    display: flex; 
-    flex-direction: row;
-    column-gap: 26px;
-}
-
-.paintBrushColorBox {
-    width: 30px;
-    height: 30px;
-    margin: auto; 
-    outline: 2px solid black;
-}
-
-.paintBrushColorBox:hover {
-    outline: 2px solid blue;
-    cursor: pointer;
-}
-
-#purpleBox {
-    background-color: purple;
-}
-
-#darkRedBox {
-    background-color: darkRed;
 }
 
 #error_sides {
@@ -81,9 +57,24 @@
     display: none;
 }
 
-.paintBrushBoxSelected {
-    outline: 2px solid blue;
+.paintBrushes > input {
+    width: 100px;
+    border-radius: 100%;
+    height: 100px;
+    border: none;
+    outline: none;
 }
+
+::-webkit-color-swatch {
+    border: none;
+    outline: none;
+    border-radius: 100%;
+    background-color: none;
+}
+
+
+
+
 
 
 
