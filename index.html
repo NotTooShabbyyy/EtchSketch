@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Etch Sketch App</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+    <div class="grid-container">
+        <div class="navbar-container">
+            <div class="create-new-grid-container">
+                <button onclick="showPopup()">Create New Grid</button>
+                <div class="form-creation-container">
+                    <form action="" id="gridCreate"> 
+                        <label for="number_of_sides">Enter number of sides</label>
+                        <label for="error_number_of_sides" id="error_sides">The new number of sides needs to be between 1 and 100</label>
+                        <input type="number" name="newNumberOfSides" id="numberOfSides">
+                        <input type="submit">
+                    </form>
+                </div> 
+            </div>   
+
+            <div class="paintBrushes"> 
+                <h2>Choose Color</h5>  
+                <div class="paintBrushesSelector"> 
+                    <div class="paintBrushColor" id="purple"> 
+                        <h4>Purple</h4>
+                        <div id="purpleBox" class="paintBrushColorBox">
+
+                        </div>
+                    </div>
+                    <div class="paintBrushColor">
+                        <h4>Dark red</h4>
+                        <div id="darkRedBox" class="paintBrushColorBox">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sketch-container">
+            <div class="container-element">
+        </div>
+
+        </div>
+    </div>
+</body>
+</html>

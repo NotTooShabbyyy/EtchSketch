@@ -1,0 +1,91 @@
+
+
+.navbar-container {
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    column-gap: 240px;
+    margin-bottom: 42px;
+}
+
+
+.container-element {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    flex-wrap: wrap;
+    outline: 2px solid coral; 
+    justify-content: stretch;
+}
+
+.container-element-child {
+    background-color: darkCyan;
+    height: 100px;
+    width: 100px;
+    outline: 2px solid cyan;
+}
+
+
+.create-new-grid-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.form-creation-container {
+    width: 200px;
+    height: 250px;
+    background-color: orange;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 1;
+}
+
+.sketch-container {
+    outline: 6px solid black;
+    height: 10000px;
+}
+
+.paintBrushesSelector {
+    display: flex; 
+    flex-direction: row;
+    column-gap: 26px;
+}
+
+.paintBrushColorBox {
+    width: 30px;
+    height: 30px;
+    margin: auto; 
+    outline: 2px solid black;
+}
+
+.paintBrushColorBox:hover {
+    outline: 2px solid blue;
+    cursor: pointer;
+}
+
+#purpleBox {
+    background-color: purple;
+}
+
+#darkRedBox {
+    background-color: darkRed;
+}
+
+#error_sides {
+    color: red;
+    display: none;
+}
+
+.paintBrushBoxSelected {
+    outline: 2px solid blue;
+}
+
+
+
+
+
