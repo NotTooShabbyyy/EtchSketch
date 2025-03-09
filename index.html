@@ -12,7 +12,10 @@
     <div class="grid-container">
         <div class="navbar-container">
             <div class="create-new-grid-container">
-                <button onclick="showPopup()">Create New Grid</button>
+                <div class="buttons-container">
+                    <button onclick="showPopup()">Create New Grid</button>
+                    <button id="reset-grid">Reset</button> 
+                </div>
                 <div class="form-creation-container">
                     <form action="" id="gridCreate"> 
                         <label for="number_of_sides">Enter number of sides</label>
@@ -24,8 +27,39 @@
             </div>   
 
             <div class="paintBrushes"> 
-                <h2>Choose Color</h5>  
-                <input id="chooseColor" type="color" />
+                <h2>Choose Color</h2> 
+                <!-- <input id="chooseColor" type="color" /> -->
+                 <div class="colorsContainer">
+                    <div id="color1" class="color">
+                        <h3>1</h3>
+                    </div>
+                    <div id="color2" class="color">
+                        <h3>2</h3>
+                    </div>
+                    <div id="color3" class="color">
+                        <h3>3</h3>
+                    </div>
+                    <div id="color4" class="color">
+                        <h3>4</h3>
+                    </div>
+                    <div id="color5" class="color">
+                        <h3>5</h3>
+                    </div>
+                    <div id="color6" class="color">
+                        <h3>6</h3>
+                    </div>
+                    <div id="color7" class="color">
+                        <h3>7</h3>
+                    </div>
+                    <div id="color8" class="color">
+                        <h3>8</h3>
+                    </div>
+                    <div id="color9" class="color">
+                        <h3>9</h3>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 

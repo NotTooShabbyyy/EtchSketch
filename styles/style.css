@@ -4,11 +4,17 @@ body {
 }
 
 .navbar-container {
-    display: flex;    
+    display: grid; 
+    grid-template-areas: "buttons chooseColor"
+                         ". colors";
     align-items: center;
     justify-content: center;
     column-gap: 240px;
     margin-bottom: 42px;
+}
+
+.buttons-container {
+    grid-area: buttons;
 }
 
 
@@ -17,17 +23,16 @@ body {
     flex-direction: row;
     margin: auto;
     flex-wrap: wrap;
-    outline: 2px solid coral; 
+    outline: 2px solid black; 
     justify-content: stretch;
 }
 
 .container-element-child {
-    background-color: darkCyan;
-    height: 100px;
-    width: 100px;
-    outline: 2px solid cyan;
+    background-color: white;
+    outline: 2px solid black;
+    height: 30px;
+    width: 30px;
 }
-
 
 .create-new-grid-container {
     display: flex;
@@ -39,13 +44,23 @@ body {
 .form-creation-container {
     width: 200px;
     height: 250px;
-    background-color: orange;
+    background-color: black;
+    color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
     z-index: 1;
+}
+
+#gridCreate {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
 }
 
 .sketch-container {
@@ -55,6 +70,42 @@ body {
 #error_sides {
     color: red;
     display: none;
+}
+.paintBrushes {
+    
+}
+
+.paintBrushes h2 {
+    grid-area: chooseColor;
+    text-align: center;
+}
+
+.colorsContainer {
+    display: flex;
+    column-gap: 9px;
+}
+
+.color {
+    height: 50px;
+    width: 50px;
+    outline: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color h3 {
+    color: black;
+    font-size: 22px;
+}
+
+#color1 {
+    outline: 3px solid white;
+}
+
+.color:hover {
+    outline: 3px solid white !important;
+    cursor: pointer;
 }
 
 .paintBrushes > input {
@@ -71,6 +122,29 @@ body {
     border-radius: 100%;
     background-color: none;
 }
+
+#chooseColor:hover {
+    outline: 3.1px solid black;
+    cursor: pointer;
+}
+
+.buttons-container > button {
+    margin-right: 20px;
+}
+
+button {
+    background-color: cyan;
+    border: none;
+    padding: 12px;
+    outline: none;
+    letter-spacing: 2px;
+}
+
+button:hover {
+    cursor: pointer;
+    outline: 3.1px solid black;
+}
+
 
 
 

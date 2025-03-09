@@ -1,11 +1,92 @@
 let parentElement = document.querySelector(".container-element");
 let formElement = document.querySelector(".form-creation-container");
 let chooseColor = document.querySelector("#chooseColor");
-let currentColor = "black";
+let resetGridBtn = document.querySelector("#reset-grid");
+let widthOfEachSquare = 30;
+const colorsArray = ["red", "blue", "green", "purple", "orange", "yellow",
+              "lightBlue", "pink", "cyan"
+            ];
+let previousColorSelected = document.querySelector("#color1");
+
+let ableToDraw = true;
+
+
+let colorsContainer = document.querySelector(".colorsContainer");
+let colors = Array.from(document.querySelectorAll(".color"));
+
+colors.forEach((currentColorBox, index) => {
+    currentColorBox.style.backgroundColor = colorsArray[index];    
+});
+
+function selectColor(event) { 
+    // checks for keyboard number press to pick right color
+
+    
+    if (event.type == "keypress") {
+        // if user presses on container element we exit out of this functio
+
+    
+
+            console.log(event.key)
+            previousColorSelected.style.outline = "3px solid black";
+            previousColorSelected = document.querySelector(`#color${event.key}`);
+            document.querySelector(`#color${event.key}`).style.outline = "3px solid white";
+    
+    } 
+
+    else if (event.type == "click") {
+        console.log("color is being pressed on");
+
+        
+
+        
+        // Checks to make sure its the color box being clicked and not the parent container element
+            if (event.target.className == "color" || event.target.parentNode.className == "color") {
+
+                let colorID;
+                colorID = event.target.parentNode.className == "color" ? event.target.parentNode.id : event.target.id;
+                console.log(colorID);
+                console.log("superr");
+                previousColorSelected.style.outline = "3px solid black";
+                previousColorSelected = document.querySelector(`#${colorID}`);
+                previousColorSelected.style.outline = "3px solid white";
+
+                console.log(previousColorSelected)
+                
+
+                
+            
+
+                   
+            }
+            
+    
+    }
+}
+
+colorsContainer.addEventListener("click", (e) => {
+    selectColor(e);
+})
+
+
+// binds numbers on keyboard to color selector box
+
+document.addEventListener("keypress", (e) => {
+    selectColor(e);
+})
 
 
 
-let currentColorSelected;
+
+
+
+
+
+
+
+
+
+
 
 function populateContainerElement(numberOfSides) {
     let totalNumberOfSquares = numberOfSides * numberOfSides;
@@ -14,27 +95,44 @@ function populateContainerElement(numberOfSides) {
         let childElement = document.createElement("div"); 
         childElement.className = "container-element-child";
         let originalColorChildElement = childElement.style.backgroundColor;
-        childElement.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log(randomColor());
-            childElement.style.backgroundColor = currentColor;
-        }); 
+    
+   
 
+        // check if mouse is being clicked as well;
+       parentElement.addEventListener("mouseover", (e) => {
+        // sees if left mouse btn is being clicked
+            e.target.style.cursor = "pointer";
+
+          
+          
+            if (e.buttons == 1) {
+                e.target.style.backgroundColor = previousColorSelected.style.backgroundColor;
+
+                console.log("left thing has been clicked");
+            } 
+            
+            else if (e.buttons === 2) {
+                e.target.style.backgroundColor = "white";
+                e.target.setAttribute("data-colorSaved", "false")
+            }
+       });
+
+       parentElement.addEventListener("mouseout", (e) => {
+      
 
         
-        // This event will handle the player erasing the square box
-        childElement.addEventListener("contextmenu", (e) => {
-            e.preventDefault();
-            childElement.style.backgroundColor = originalColorChildElement;
-        })
+       });
+
+    
+
         parentElement.appendChild(childElement);
     }
 
     // Set the total width of the container, to provide the container element
     // with the right number of rows
-    parentElement.style.width = (numberOfSides * 100) + "px";
+    parentElement.style.width = (numberOfSides * widthOfEachSquare) + "px";
 
-    console.log(parentElement.style.width);
+
 }
 
 function randomColor() {
@@ -68,15 +166,20 @@ createGridForm.addEventListener("submit", (e) => {
     formElement.style.display = "none";
     parentElement.innerHTML = "";
     parentElement.style["justify-content"] = "flex-start";
-    console.log(parentElement);
     parentElement.style.opacity = "1";
     populateContainerElement(newNumberOfSides);   
-    console.log(e);
 });
 
 
-chooseColor.addEventListener("input", (event) => {
-    currentColor = event.target.value;
+// chooseColor.addEventListener("input", (event) => {
+//     currentColor = event.target.value;
+// })
+
+resetGridBtn.addEventListener("click", (e) => {
+    let grid_element_children = document.querySelectorAll(".container-element-child");
+    grid_element_children.forEach(gridBox => {
+        gridBox.style.backgroundColor = "white";
+    })
 })
 
 // This code will be for the paintbrush selector
