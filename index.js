@@ -9,6 +9,8 @@ const colorsArray = ["red", "blue", "green", "purple", "orange", "yellow",
 let previousColorSelected = document.querySelector("#color1");
 
 let ableToDraw = true;
+let eraserSelected = false;
+let eraser = document.querySelector("#eraser");
 
 
 let colorsContainer = document.querySelector(".colorsContainer");
@@ -20,13 +22,17 @@ colors.forEach((currentColorBox, index) => {
 
 function selectColor(event) { 
     // checks for keyboard number press to pick right color
-
-    
     if (event.type == "keypress") {
         // if user presses on container element we exit out of this functio
+            if (event.key == "e") {
+                eraserSelected = true;
+                previousColorSelected.style.outline = "3px solid black";
+                eraser.style.outline = "3px solid white";
+                return;
+            } 
 
-    
-
+            eraserSelected = false;
+            eraser.style.outline = "3px solid black";
             console.log(event.key)
             previousColorSelected.style.outline = "3px solid black";
             previousColorSelected = document.querySelector(`#color${event.key}`);
@@ -45,19 +51,9 @@ function selectColor(event) {
 
                 let colorID;
                 colorID = event.target.parentNode.className == "color" ? event.target.parentNode.id : event.target.id;
-                console.log(colorID);
-                console.log("superr");
                 previousColorSelected.style.outline = "3px solid black";
                 previousColorSelected = document.querySelector(`#${colorID}`);
-                previousColorSelected.style.outline = "3px solid white";
-
-                console.log(previousColorSelected)
-                
-
-                
-            
-
-                   
+                previousColorSelected.style.outline = "3px solid white";                   
             }
             
     
@@ -69,23 +65,15 @@ colorsContainer.addEventListener("click", (e) => {
 })
 
 
-// binds numbers on keyboard to color selector box
+
 
 document.addEventListener("keypress", (e) => {
-    selectColor(e);
+    let numberPressed = parseInt(e.key);
+
+    if (numberPressed > 0 && numberPressed < 10 || e.key == "e") {
+        selectColor(e);
+    }
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function populateContainerElement(numberOfSides) {
@@ -106,22 +94,26 @@ function populateContainerElement(numberOfSides) {
           
           
             if (e.buttons == 1) {
-                e.target.style.backgroundColor = previousColorSelected.style.backgroundColor;
 
-                console.log("left thing has been clicked");
-            } 
-            
-            else if (e.buttons === 2) {
+                if (!eraserSelected) {
+                    e.target.style.backgroundColor = previousColorSelected.style.backgroundColor;
+                    return;
+                }
+
                 e.target.style.backgroundColor = "white";
-                e.target.setAttribute("data-colorSaved", "false")
-            }
+
+            } 
        });
 
-       parentElement.addEventListener("mouseout", (e) => {
-      
+       parentElement.addEventListener("click", (e) => {
+        e.target.style.backgroundColor = previousColorSelected.style.backgroundColor;
+       
+         // check for single right click
 
-        
-       });
+         if (eraserSelected) {
+            e.target.style.backgroundColor = "white";
+         }
+        });
 
     
 

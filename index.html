@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Etch Sketch App</title>
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="index.js" defer></script>
 </head>
 <body>
@@ -18,7 +21,7 @@
                 </div>
                 <div class="form-creation-container">
                     <form action="" id="gridCreate"> 
-                        <label for="number_of_sides">Enter number of sides</label>
+                        <label id="numberOfSidesLabel" for="number_of_sides">Enter number of sides</label>
                         <label for="error_number_of_sides" id="error_sides">The new number of sides needs to be between 1 and 100</label>
                         <input type="number" name="newNumberOfSides" id="numberOfSides">
                         <input type="submit">
@@ -27,7 +30,9 @@
             </div>   
 
             <div class="paintBrushes"> 
+              
                 <h2>Choose Color</h2> 
+
                 <!-- <input id="chooseColor" type="color" /> -->
                  <div class="colorsContainer">
                     <div id="color1" class="color">
@@ -56,6 +61,9 @@
                     </div>
                     <div id="color9" class="color">
                         <h3>9</h3>
+                    </div>
+                    <div id="eraser" class="color">
+                        <h3>E</h3>
                     </div>
                 </div>
 

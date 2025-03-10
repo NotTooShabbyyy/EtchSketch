@@ -1,12 +1,28 @@
+@font-face {
+    font-family: "SuperClean";
+    src: url("../CleanEasy.ttf");
+}
+
+
 body {
     background-color: lightcoral;
     color: cyan;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat";
+}
+
+h2 {
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 80px;
+    font-family: "SuperClean";
+    margin-bottom: 2px;
+    vertical-align: top;
 }
 
 .navbar-container {
     display: grid; 
-    grid-template-areas: "buttons chooseColor"
-                         ". colors";
     align-items: center;
     justify-content: center;
     column-gap: 240px;
@@ -14,7 +30,9 @@ body {
 }
 
 .buttons-container {
-    grid-area: buttons;
+    display: flex;
+    flex-wrap: wrap;23
+    overflow-x: auto;
 }
 
 
@@ -42,25 +60,33 @@ body {
 }
 
 .form-creation-container {
-    width: 200px;
-    height: 250px;
-    background-color: black;
+    width: 250px;
+    height: 300px;
+    background-color: cyan;
     color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: black;
     display: none;
     z-index: 1;
+    border: 7px solid black;
+    border-radius: 3.1px;
 }
 
 #gridCreate {
-    display: flex;
+    display: grid;
     flex-direction: column;
     row-gap: 20px;
     align-items: center;
     justify-content: center;
     height: 250px;
+    text-align: center;
+}
+
+#numberOfSidesLabel {
+    font-size: 22px;
 }
 
 .sketch-container {
@@ -70,9 +96,6 @@ body {
 #error_sides {
     color: red;
     display: none;
-}
-.paintBrushes {
-    
 }
 
 .paintBrushes h2 {
@@ -84,7 +107,6 @@ body {
     display: flex;
     column-gap: 9px;
 }
-
 .color {
     height: 50px;
     width: 50px;
@@ -96,7 +118,8 @@ body {
 
 .color h3 {
     color: black;
-    font-size: 22px;
+    font-size: 62px;
+    font-family: "SuperClean";
 }
 
 #color1 {
@@ -106,6 +129,19 @@ body {
 .color:hover {
     outline: 3px solid white !important;
     cursor: pointer;
+}
+
+#eraser {
+    background-image: url("../imgs/clean-code.png");
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: silver;
+    color: white;
+}
+
+#eraser h3 {
+    font-size: 46px;
 }
 
 .paintBrushes > input {
@@ -144,7 +180,6 @@ button:hover {
     cursor: pointer;
     outline: 3.1px solid black;
 }
-
 
 
 
