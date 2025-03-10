@@ -1,20 +1,24 @@
+// Element selectors
+
 let parentElement = document.querySelector(".container-element");
 let formElement = document.querySelector(".form-creation-container");
 let chooseColor = document.querySelector("#chooseColor");
 let resetGridBtn = document.querySelector("#reset-grid");
-let widthOfEachSquare = 30;
+let colorsContainer = document.querySelector(".colorsContainer");
+let colors = Array.from(document.querySelectorAll(".color"));
+let eraser = document.querySelector("#eraser");
+let previousColorSelected = document.querySelector("#color1");
+
+
+// Constant values used throughout file
+const widthOfEachSquare = 30;
 const colorsArray = ["red", "blue", "green", "purple", "orange", "yellow",
               "lightBlue", "pink", "cyan"
             ];
-let previousColorSelected = document.querySelector("#color1");
-
-let ableToDraw = true;
-let eraserSelected = false;
-let eraser = document.querySelector("#eraser");
 
 
-let colorsContainer = document.querySelector(".colorsContainer");
-let colors = Array.from(document.querySelectorAll(".color"));
+// Boolean values used for conditional logic
+let eraserSelected = false; 
 
 colors.forEach((currentColorBox, index) => {
     currentColorBox.style.backgroundColor = colorsArray[index];    
@@ -23,36 +27,43 @@ colors.forEach((currentColorBox, index) => {
 function selectColor(event) { 
     // checks for keyboard number press to pick right color
     if (event.type == "keypress") {
-        // if user presses on container element we exit out of this functio
+        // Check to see if user pressed the e key so that we can enable erasing
             if (event.key == "e") {
                 eraserSelected = true;
                 previousColorSelected.style.outline = "3px solid black";
                 eraser.style.outline = "3px solid white";
+
+                // guard clause below so rest of the code doesn't run in this function
                 return;
             } 
 
+            // set eraserSelected to false so the drawing is enabled again
             eraserSelected = false;
             eraser.style.outline = "3px solid black";
-            console.log(event.key)
             previousColorSelected.style.outline = "3px solid black";
             previousColorSelected = document.querySelector(`#color${event.key}`);
             document.querySelector(`#color${event.key}`).style.outline = "3px solid white";
     
     } 
 
+    // checks to see if user picks a specific color via click.
+
     else if (event.type == "click") {
-        console.log("color is being pressed on");
-
         
-
-        
-        // Checks to make sure its the color box being clicked and not the parent container element
+        // Checks to make sure the color box is being clicked and not the container for all colors
+        // Also okay if the number itself gets clicked on the color box
             if (event.target.className == "color" || event.target.parentNode.className == "color") {
 
+                // Store the id of the color being clicked in this colorID var
                 let colorID;
                 colorID = event.target.parentNode.className == "color" ? event.target.parentNode.id : event.target.id;
+              
+                // set previous color selected element back to default outline of black
+                // therefore only one color element can be selected at a time
                 previousColorSelected.style.outline = "3px solid black";
                 previousColorSelected = document.querySelector(`#${colorID}`);
+
+                // sets new color selected to white, showing user this is the one being draw with
                 previousColorSelected.style.outline = "3px solid white";                   
             }
             
@@ -60,11 +71,10 @@ function selectColor(event) {
     }
 }
 
+// Event listeners
 colorsContainer.addEventListener("click", (e) => {
     selectColor(e);
 })
-
-
 
 
 document.addEventListener("keypress", (e) => {
@@ -83,20 +93,21 @@ function populateContainerElement(numberOfSides) {
         let childElement = document.createElement("div"); 
         childElement.className = "container-element-child";
         let originalColorChildElement = childElement.style.backgroundColor;
-    
-   
-
-        // check if mouse is being clicked as well;
+       
+       // check if mouse is being clicked as well;
        parentElement.addEventListener("mouseover", (e) => {
-        // sees if left mouse btn is being clicked
             e.target.style.cursor = "pointer";
 
-          
-          
+            // If left mouse is being clicked, this e.buttons value returns 1
             if (e.buttons == 1) {
 
+                // We make sure that the eraserSelected variable is disable so that
+                // the user can draw again
                 if (!eraserSelected) {
                     e.target.style.backgroundColor = previousColorSelected.style.backgroundColor;
+                    
+                    // guard clause acting as an else statement basically
+                    // if eraser is selected the line of code under this if condition will run
                     return;
                 }
 
@@ -107,15 +118,12 @@ function populateContainerElement(numberOfSides) {
 
        parentElement.addEventListener("click", (e) => {
         e.target.style.backgroundColor = previousColorSelected.style.backgroundColor;
-       
-         // check for single right click
-
+         
+        // check for single right click
          if (eraserSelected) {
             e.target.style.backgroundColor = "white";
          }
         });
-
-    
 
         parentElement.appendChild(childElement);
     }
@@ -162,20 +170,12 @@ createGridForm.addEventListener("submit", (e) => {
     populateContainerElement(newNumberOfSides);   
 });
 
-
-// chooseColor.addEventListener("input", (event) => {
-//     currentColor = event.target.value;
-// })
-
 resetGridBtn.addEventListener("click", (e) => {
     let grid_element_children = document.querySelectorAll(".container-element-child");
     grid_element_children.forEach(gridBox => {
         gridBox.style.backgroundColor = "white";
-    })
-})
-
-// This code will be for the paintbrush selector
-
+    });
+});
 
 
 
