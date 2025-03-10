@@ -242,7 +242,7 @@ input[type=submit]:hover {
 
 button:hover {
     cursor: pointer;
-    outline: 3.1px solid black;
+    outline: 3.1px solid white;
 }
 
 
