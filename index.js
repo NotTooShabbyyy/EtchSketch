@@ -170,7 +170,7 @@ createGridForm.addEventListener("submit", (e) => {
 resetGridBtn.addEventListener("click", (e) => {
     let grid_element_children = document.querySelectorAll(".container-element-child");
     grid_element_children.forEach(gridBox => {
-        gridBox.style.backgroundColor = "white";
+        gridBox.style.backgroundColor = "rgb(232, 232, 232)";
     });
 });
 
