@@ -125,9 +125,8 @@ function populateContainerElement(numberOfSides) {
        parentElement.addEventListener("click", (e) => {
         e.target.style.backgroundColor = previousColorSelected.style.backgroundColor;
          
-        // check for single right click
          if (eraserSelected) {
-            e.target.style.backgroundColor = "white";
+            e.target.style.backgroundColor = "rgb(232, 232, 232)";
          }
         });
 
@@ -146,7 +145,7 @@ populateContainerElement(16);
 function showPopup() {
     formElement.style.display = "block";
     document.body.classList.add("stop-scrolling");
-    blurOutContainer.style.display= "block"; // setting this opacity to 0.2 will make the background darker which will give the form that is being shown a popup effect
+    blurOutContainer.style.display= "block";  
 } 
 
 let createGridForm = document.querySelector("#gridCreate"); 
