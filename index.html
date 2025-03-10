@@ -19,6 +19,9 @@
 <body>
 
     <div class="grid-container">
+        <div class="blur-out-background">
+
+        </div>
         <div class="navbar-container">
             <div class="create-new-grid-container">
                 <div class="buttons-container">
@@ -28,8 +31,7 @@
                 <div class="form-creation-container">
                     <form action="" id="gridCreate"> 
                         <label id="numberOfSidesLabel" for="number_of_sides">Enter number of sides</label>
-                        <label for="error_number_of_sides" id="error_sides">The new number of sides needs to be between 1 and 100</label>
-                        <input type="number" name="newNumberOfSides" id="numberOfSides">
+                        <input type="number" name="newNumberOfSides" id="numberOfSides" min="2" max="50">
                         <input type="submit">
                     </form>
                 </div> 

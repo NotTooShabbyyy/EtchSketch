@@ -1,5 +1,8 @@
 // Element selectors
 
+let gridContainer = document.querySelector(".grid-container");
+let blurOutContainer = document.querySelector(".blur-out-background");
+console.log(gridContainer.style);
 let parentElement = document.querySelector(".container-element");
 let formElement = document.querySelector(".form-creation-container");
 let chooseColor = document.querySelector("#chooseColor");
@@ -87,6 +90,9 @@ document.addEventListener("keypress", (e) => {
 
 
 function populateContainerElement(numberOfSides) {
+    blurOutContainer.style.display = "none";
+    document.body.classList.remove("stop-scrolling");
+
     let totalNumberOfSquares = numberOfSides * numberOfSides;
 
     for (let i = 0; i < totalNumberOfSquares; i++) {
@@ -111,7 +117,7 @@ function populateContainerElement(numberOfSides) {
                     return;
                 }
 
-                e.target.style.backgroundColor = "white";
+                e.target.style.backgroundColor = "rgb(232, 232, 232)";
 
             } 
        });
@@ -135,20 +141,12 @@ function populateContainerElement(numberOfSides) {
 
 }
 
-function randomColor() {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-
-    return `rgb(${r}, ${g}, ${b})`;
-}
-
 populateContainerElement(16);  
 
 function showPopup() {
     formElement.style.display = "block";
-    parentElement.style.opacity = "0.2"; // setting this opacity to 0.2 will make the background darker which will give the form that is being shown a popup effect
-
+    document.body.classList.add("stop-scrolling");
+    blurOutContainer.style.display= "block"; // setting this opacity to 0.2 will make the background darker which will give the form that is being shown a popup effect
 } 
 
 let createGridForm = document.querySelector("#gridCreate"); 
